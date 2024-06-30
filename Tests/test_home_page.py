@@ -27,18 +27,17 @@ class Test_HomePage():
 
         HomePage(driver).check_careers_block()
         HomePage(driver).check_locations_block()
-        #HomePage(driver).check_life_At_insider_block()
+        HomePage(driver).check_life_At_insider_block()
         HomePage(driver).click_see_all_teams()
         time.sleep(1)
         HomePage(driver).click_quality_assurance()
         HomePage(driver).click_see_all_qa_jobs()
-        time.sleep(5)
-        #HomePage(driver).selection()
-        HomePage(driver).select_location_filter()
+        time.sleep(2)
+        HomePage(driver).set_location_filter2("Istanbul")
         time.sleep(1)
-        HomePage(driver).selection_deneme()
-
-        time.sleep(5)
+        assert HomePage(driver).are_there_jobs(), "There eno jobs available right now"
+        assert HomePage(driver).is_department_correct(), "Department for this position is not correct"
+        assert HomePage(driver).is_location_correct(), "Location for this position is not correct"
         driver.quit()
 
 

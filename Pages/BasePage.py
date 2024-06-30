@@ -50,3 +50,6 @@ class BasePage:
     def click_by(self, element):
         elem = self.find_element(element)
         elem.click()
+
+    def get_elements(self, element):
+        return self.driver.find_elements(*element)
