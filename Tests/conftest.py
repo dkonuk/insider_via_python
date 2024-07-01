@@ -8,8 +8,7 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.firefox.service import Service as FireFoxService
 from selenium.webdriver.firefox.options import Options as FireFoxOptions
 from webdriver_manager.firefox import GeckoDriverManager
-os.environ['GH_TOKEN']= "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"
-"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"
+os.environ['GH_TOKEN'] = "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"
 
 
 @pytest.fixture(params=['Chrome', 'FireFox'])
@@ -24,7 +23,8 @@ def fixtureSetup(request):
         
     elif request.param == "FireFox":
         ff_options = FireFoxOptions()
-        ff_options.add_argument("--headless")
+        #ff_options.add_argument("--headless")
+        ff_options.add_argument("--window-size=1920,1080")
         driver = webdriver.Firefox(service=FireFoxService(GeckoDriverManager().install()), options=ff_options)
     return driver
         

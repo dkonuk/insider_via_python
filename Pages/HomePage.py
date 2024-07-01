@@ -34,9 +34,6 @@ class HomePage(BasePage):
     def check_if_page_loaded(self):
         return BasePage.element_displayed_status(self, self.nav_bar_load)
 
-    def click_careers(self):
-        BasePage.dropdown_menu_select(self, self.nav_bar_company, self.nav_bar_company_carreers)
-
     def click_careers_in_Steps(self):
         BasePage.click_action(self, self.nav_bar_company)
         time.sleep(1)
@@ -59,33 +56,6 @@ class HomePage(BasePage):
 
     def click_see_all_qa_jobs(self):
         BasePage.click_action(self, self.see_all_qa_jobs)
-
-    def select_location_filter(self):
-        BasePage.click_action(self, self.location_filter)
-
-    def select_istanbul(self):
-        BasePage.click_action(self, self.location_istanbul)
-
-    def selection(self):
-        BasePage.click(self, self.location_istanbul)
-
-    def selection_deneme(self):
-        BasePage.dropdown_menu_select_first_element(self, self.location_istanbul)
-
-    # def click_istanbul(self):
-    #     BasePage.scroll_to_element(self, self.location_istanbul)
-    #     BasePage.click_by(self, self.location_istanbul)
-    def select_istanbul_with_keys(self):
-         BasePage.click(self, self.location_istanbul)
-
-    def set_location_filter(self, location):
-        self.click_by(self.location_filter)
-        location_element = list(self.LOCATION_SELECTION)
-        location_element[1] = self.LOCATION_SELECTION[1].format(location)
-        self.LOCATION_SELECTION = tuple(location_element)
-        self.scroll_to_element(self.LOCATION_SELECTION)
-        self.click_by(self.LOCATION_SELECTION)
-        time.sleep(2)
 
     def set_location_filter2(self, location):
         print(f"Clicking on location filter: {self.location_filter}")
