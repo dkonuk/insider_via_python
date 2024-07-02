@@ -38,6 +38,9 @@ class Test_HomePage():
         assert HomePage(driver).are_there_jobs(), "There eno jobs available right now"
         assert HomePage(driver).is_department_correct(), "Department for this position is not correct"
         assert HomePage(driver).is_location_correct(), "Location for this position is not correct"
+        HomePage(driver).close_location_filter()
+        HomePage(driver).click_view_role_button()
+        time.sleep(5)
         driver.quit()
 
 

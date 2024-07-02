@@ -53,3 +53,8 @@ class BasePage:
 
     def get_elements(self, element):
         return self.driver.find_elements(*element)
+
+    def escape(self):
+       ActionChains(self.driver)\
+        .send_keys(Keys.ESCAPE)\
+        .perform()

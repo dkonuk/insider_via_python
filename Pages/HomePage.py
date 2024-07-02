@@ -22,8 +22,16 @@ class HomePage(BasePage):
     job_list = (By.CSS_SELECTOR, "#jobs-list")
     job_list_department = (By.CSS_SELECTOR, ".position-department")
     job_list_location = (By.CSS_SELECTOR, ".position-location")
+    job_list_position = (By.CSS_SELECTOR, ".position-title")
     team = "Quality Assurance"
     location = "Istanbul"
+    position = "Quality Assurance"
+    role_box_locator = (By.CSS_SELECTOR, "#jobs-list > div:nth-child(1) > div > a")
+    view_roles = (By.XPATH, '//*[@id="jobs-list"]/div[1]/div/a')
+
+    # jobs-list > div:nth-child(1) > div
+
+
 
     def __init__(self, driver):
         super().__init__(driver)
@@ -69,7 +77,7 @@ class HomePage(BasePage):
         self.scroll_to_element(self.LOCATION_SELECTION)
         time.sleep(1)
         print(f"Clicking on location selection: {self.LOCATION_SELECTION}")
-        self.click_by(self.LOCATION_SELECTION)
+        self.click_action(self.LOCATION_SELECTION)
 
     def are_there_jobs(self):
         positions = self.get_elements(self.job_list)
@@ -97,6 +105,21 @@ class HomePage(BasePage):
 
         return True
 
+    def is_job_position_correct(self):
+        positions_position = self.get_elements(self.job_list_position)
+        for position in positions_position:
+            print(position.text)
+            is_position_correct = position.text.__contains__(self.position)
+            if is_position_correct == False:
+                return False
 
+        return True
+
+    def click_view_role_button(self):
+        BasePage.scroll_to_element(self, self.role_box_locator)
+        BasePage.click_by(self, self.view_roles)
+
+    def close_location_filter(self):
+        BasePage.escape(self)
 
 
